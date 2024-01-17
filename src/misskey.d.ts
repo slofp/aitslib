@@ -21,50 +21,55 @@ declare const LOCALE: str;
 declare const SERVER_URL: str;
 
 type ModalIconType = 'info' | 'success' | 'warn' | 'error' | 'question';
-declare namespace Mk {
-	function dialog(title: str, text: str, type?: ModalIconType): null;
-	function confirm(title: str, text: str, type?: ModalIconType): bool;
-	function api(endpoint: str, params: obj, token?: str): obj | Error;
-	function save(key: str, value: value): null;
-	function load(key: str): value;
-	function url(): str;
-	function nyaize(text: str): str;
+declare interface Mk {
+	dialog(title: str, text: str, type?: ModalIconType): null;
+	confirm(title: str, text: str, type?: ModalIconType): bool;
+	api(endpoint: str, params: obj, token?: str): obj | Error;
+	save(key: str, value: value): null;
+	load(key: str): value;
+	url(): str;
+	nyaize(text: str): str;
+}
+declare var Mk: Mk;
+
+declare interface Plugin {
+	readonly config: obj;
+	register_post_form_action(title: str, fn: (form: { text: str, cw: str }, update: (key: 'text' | 'cw', value: str) => void) => void): void;
+	register_note_action(title: str, fn: (user: obj) => void): void;
+	register_user_action(title: str, fn: (note: obj) => void): void;
+	register_note_view_interruptor(fn: (note: obj) => obj | void): void;
+	register_note_post_interruptor(fn: (note: obj) => obj): void;
+	register_page_view_interruptor(fn: (page: obj) => obj): void;
+	open_url(url: str): void;
+}
+declare var Plugin: Plugin;
+
+interface IUiComponent<T extends obj, I extends str = str> {
+	id: I;
+	update: (options: T) => void;
 }
 
-declare namespace Plugin {
-	const config: obj;
-	function register_post_form_action(title: str, fn: (form: { text: str, cw: str }, update: (key: 'text' | 'cw', value: str) => void) => void): void;
-	function register_note_action(title: str, fn: (user: obj) => void): void;
-	function register_user_action(title: str, fn: (note: obj) => void): void;
-	function register_note_view_interruptor(fn: (note: obj) => obj | void): void;
-	function register_note_post_interruptor(fn: (note: obj) => obj): void;
-	function register_page_view_interruptor(fn: (page: obj) => obj): void;
-	function open_url(url: str): void;
+interface Component {
+	container(options: {}, id?: str): IUiComponent<typeof options>;
+	text(options: {}, id?: str): IUiComponent<typeof options>;
+	mfm(options: {}, id?: str): IUiComponent<typeof options>;
+	text(options: {}, id?: str): IUiComponent<typeof options>;
+	textarea(options: {}, id?: str): IUiComponent<typeof options>;
+	textInput(options: {}, id?: str): IUiComponent<typeof options>;
+	numberInput(options: {}, id?: str): IUiComponent<typeof options>;
+	button(options: {}, id?: str): IUiComponent<typeof options>;
+	buttons(options: {}, id?: str): IUiComponent<typeof options>;
+	switch(options: {}, id?: str): IUiComponent<typeof options>;
+	folder(options: {}, id?: str): IUiComponent<typeof options>;
+	postFormButton(options: {}, id?: str): IUiComponent<typeof options>;
+	postForm(options: {}, id?: str): IUiComponent<typeof options>;
 }
 
-declare namespace Ui {
-	interface IUiComponent<T extends obj, I extends str = str> {
-		id: I;
-		update: (options: T) => void;
-	}
+declare interface Ui {
+	readonly root: IUiComponent<{ children: arr<IUiComponent<obj>> }, '___root___'>;
+	render(children: arr<IUiComponent<obj>>): void;
+	get(id: str): IUiComponent<obj> | null;
 
-	const root: IUiComponent<{ children: arr<IUiComponent<obj>> }, '___root___'>
-	function render(children: arr<IUiComponent<obj>>);
-	function get(id: str): IUiComponent<obj> | null;
-
-	namespace C {
-		function container(options: {}, id?: str): IUiComponent<typeof options>;
-		function text(options: {}, id?: str): IUiComponent<typeof options>;
-		function mfm(options: {}, id?: str): IUiComponent<typeof options>;
-		function text(options: {}, id?: str): IUiComponent<typeof options>;
-		function textarea(options: {}, id?: str): IUiComponent<typeof options>;
-		function textInput(options: {}, id?: str): IUiComponent<typeof options>;
-		function numberInput(options: {}, id?: str): IUiComponent<typeof options>;
-		function button(options: {}, id?: str): IUiComponent<typeof options>;
-		function buttons(options: {}, id?: str): IUiComponent<typeof options>;
-		//function switch(options: {}, id?: str): IUiComponent<typeof options>;
-		function folder(options: {}, id?: str): IUiComponent<typeof options>;
-		function postFormButton(options: {}, id?: str): IUiComponent<typeof options>;
-		function postForm(options: {}, id?: str): IUiComponent<typeof options>;
-	}
+	readonly C: Component;
 }
+declare var Ui: Ui;

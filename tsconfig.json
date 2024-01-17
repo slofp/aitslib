@@ -1,6 +1,10 @@
 {
 	"compilerOptions": {
 		"module": "ESNext",
+		"alwaysStrict": true,
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
 		"lib": []
 	}
 }

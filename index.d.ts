@@ -1,7 +1,6 @@
 /*
 	これはsrcのものをマージしたもの
 */
-
 type num = Number;
 type str = String;
 type arr<T = any> = Array<T>;
@@ -238,203 +237,203 @@ interface Error {
 	info: value;
 }
 
-declare namespace Math {
+declare interface Math {
 	/**
 	 * 無限大
 	 */
-	const Infinity: num;
+	readonly Infinity: num;
 	/**
 	 * ネイピア数e
 	 */
-	const E: num;
+	readonly E: num;
 	/**
 	 * 2の自然対数
 	 */
-	const LN2: num;
+	readonly LN2: num;
 	/**
 	 * 10の自然対数
 	 */
-	const LN10: num;
+	readonly LN10: num;
 	/**
 	 * 2を底としたeの対数
 	 */
-	const LOG2E: num;
+	readonly LOG2E: num;
 	/**
 	 * 10を底としたeの対数
 	 */
-	const LOG10E: num;
+	readonly LOG10E: num;
 	/**
 	 * 円周率π
 	 */
-	const PI: num;
+	readonly PI: num;
 	/**
 	 * √(1/2)
 	 */
-	const SQRT1_2: num;
+	readonly SQRT1_2: num;
 	/**
 	 * √2
 	 */
-	const SQRT2: num;
+	readonly SQRT2: num;
 	/**
 	 * 絶対値を計算します。
 	 * @param x
 	 */
-	function abs(x: num): num;
+	abs(x: num): num;
 	/**
 	 * x が正であれば1、負であれば-1、0または-0であればそのままの値を返します。
 	 * いずれでもなければNaNを返します。
 	 * @param x
 	 */
-	function sign(x: num): num;
+	sign(x: num): num;
 	/**
 	 * 四捨五入して、もっとも近い整数を返します。
 	 * @param x
 	 */
-	function round(x: num): num;
+	round(x: num): num;
 	/**
 	 * 引数以上の最小の整数を返します。
 	 * @param x
 	 */
-	function ceil(x: num): num;
+	ceil(x: num): num;
 	/**
 	 * 引数以下の最大の整数を返します。
 	 * @param x
 	 */
-	function floor(x: num): num;
+	floor(x: num): num;
 	/**
 	 * 引数の小数部を切り捨て、整数部を返します。
 	 * @param x
 	 */
-	function trunc(x: num): num;
+	trunc(x: num): num;
 	/**
 	 * 小さい方の値を取得します。
 	 * @param a
 	 * @param b
 	 */
-	function min(a: num, b: num): num;
+	min(a: num, b: num): num;
 	/**
 	 * 大きい方の値を取得します。
 	 * @param a
 	 * @param b
 	 */
-	function max(a: num, b: num): num;
+	max(a: num, b: num): num;
 	/**
 	 * 正の平方根を計算します。
 	 * @param x
 	 */
-	function sqrt(x: num): num;
+	sqrt(x: num): num;
 	/**
 	 * 立方根を計算します。
 	 * @param x
 	 */
-	function cbrt(x: num): num;
+	cbrt(x: num): num;
 	/**
 	 * vs の要素をそれぞれ自乗してから合計した値の正の平方根を返します。
 	 * @param vs
 	 */
-	function hypot(vs: arr): num;
+	hypot(vs: arr): num;
 	/**
 	 * 正弦を計算します。
 	 * @param rad - 角度の単位はラジアンです。
 	 */
-	function sin(rad: num): num;
+	sin(rad: num): num;
 	/**
 	 * 余弦を計算します。
 	 * @param rad - 角度の単位はラジアンです。
 	 */
-	function cos(rad: num): num;
+	cos(rad: num): num;
 	/**
 	 * 正接を計算します。
 	 * @param rad - 角度の単位はラジアンです。
 	 */
-	function tan(rad: num): num;
+	tan(rad: num): num;
 	/**
 	 * 逆正弦を計算します。
 	 * @param x
 	 */
-	function asin(x: num): num;
+	asin(x: num): num;
 	/**
 	 * 逆余弦を計算します。
 	 * @param x
 	 */
-	function acos(x: num): num;
+	acos(x: num): num;
 	/**
 	 * 逆正接を計算します。
 	 * @param x
 	 */
-	function atan(x: num): num;
+	atan(x: num): num;
 	/**
 	 * y /x の正接を返しますが、x が負値の場合はπだけずれた値を返します。
 	 * @param y
 	 * @param x
 	 */
-	function atan2(y: num, x: num): num;
+	atan2(y: num, x: num): num;
 	/**
 	 * 双曲線正弦を計算します。
 	 * @param x
 	 */
-	function sinh(x: num): num;
+	sinh(x: num): num;
 	/**
 	 * 双曲線余弦を計算します。
 	 * @param x
 	 */
-	function cosh(x: num): num;
+	cosh(x: num): num;
 	/**
 	 * 双曲線正接を計算します。
 	 * @param x
 	 */
-	function tanh(x: num): num;
+	tanh(x: num): num;
 	/**
 	 * 双曲線逆正弦を計算します。
 	 * @param x
 	 */
-	function asinh(x: num): num;
+	asinh(x: num): num;
 	/**
 	 * 双曲線逆余弦を計算します。
 	 * @param x
 	 */
-	function acosh(x: num): num;
+	acosh(x: num): num;
 	/**
 	 * 双曲線逆正接を計算します。
 	 * @param x
 	 */
-	function atanh(x: num): num;
+	atanh(x: num): num;
 	/**
 	 * x の y 乗を計算します。結果がNaNとなることを許容する点、内部的にJavascriptの**演算子ではなくMath.pow関数を用いている点の２つを除き、ほぼCore:powと同じものです。
 	 * @param x
 	 * @param y
 	 */
-	function pow(x: num, y: num): num;
+	pow(x: num, y: num): num;
 	/**
 	 * eの x 乗を計算します。
 	 * @param x
 	 */
-	function exp(x: num): num;
+	exp(x: num): num;
 	/**
 	 * eの x 乗から1を引いた値を計算します。
 	 * @param x
 	 */
-	function expm1(x: num): num;
+	expm1(x: num): num;
 	/**
 	 * 自然対数を計算します。常用対数にはMath:log10を使用して下さい。
 	 * @param x
 	 */
-	function log(x: num): num;
+	log(x: num): num;
 	/**
 	 * x +1の自然対数を計算します。
 	 * @param x
 	 */
-	function log1p(x: num): num;
+	log1p(x: num): num;
 	/**
 	 * 10を底とした対数を計算します。
 	 * @param x
 	 */
-	function log10(x: num): num;
+	log10(x: num): num;
 	/**
 	 * 2を底とした対数を計算します。
 	 * @param x
 	 */
-	function log2(x: num): num;
+	log2(x: num): num;
 	/**
 	 * 乱数を生成します。
 	 *
@@ -443,51 +442,53 @@ declare namespace Math {
 	 * @param min
 	 * @param max
 	 */
-	function rnd(min?: num, max?: num): num;
+	rnd(min?: num, max?: num): num;
 	/**
 	 * シードから乱数生成機を生成します。
 	 * @param seed
 	 */
-	function gen_rng(seed: num | str): () => num;
+	gen_rng(seed: num | str): () => num;
 	/**
 	 * xを32ビットのバイナリで表現したときの先頭の0の個数を返します。
 	 * @param x
 	 */
-	function clz32(x: num): num;
+	clz32(x: num): num;
 	/**
 	 * x を32ビットの浮動小数点数に変換した時の値を返します。
 	 * @param x
 	 */
-	function fround(x: num): num;
+	fround(x: num): num;
 	/**
 	 * x と y に対しC言語風の32ビット乗算を行った結果を返します。
 	 * @param x
 	 * @param y
 	 */
-	function imul(x: num, y: num): num;
+	imul(x: num, y: num): num;
 }
+declare var Math: Math;
 
-declare namespace Core {
+declare interface Core {
 	/**
 	 * AiScriptのバージョンです。
 	 */
-	const v: str;
+	readonly v: str;
 	/**
 	 * 値の型名を取得します。
 	 * @param v
 	 */
-	function type(v: value): 'null' | 'bool' | 'num' | 'str' | 'arr' | 'obj';
+	type(v: value): 'null' | 'bool' | 'num' | 'str' | 'arr' | 'obj';
 	/**
 	 * 値を表す文字列を取得します。
 	 * @param v
 	 */
-	function to_str(v: value): str;
+	to_str(v: value): str;
 	/**
 	 * 指定時間（ミリ秒）待機します。
 	 * @param time
 	 */
-	function sleep(time: value): void;
+	sleep(time: value): void;
 }
+declare var Core: Core;
 
 // Global
 
@@ -504,36 +505,38 @@ declare function print(message: str): void;
 declare function readline(message: str): str;
 
 
-declare namespace Util {
+declare interface Util {
 	/**
 	 * 新しいUUIDを生成します。
 	 */
-	function uuid(): str;
+	uuid(): str;
 }
+declare var Util: Util;
 
-declare namespace Json {
+declare interface Json {
 	/**
 	 * JSONを生成します。
 	 * @param v
 	 */
-	function stringify(v: value): str;
+	stringify(v: value): str;
 	/**
 	 * JSONをパースします。 引数がJSONとしてパース可能性でない場合、エラー型の値（name='not_json'）を返します。
 	 * @param json
 	 */
-	function parse(json: str): value;
+	parse(json: str): value;
 	/**
 	 * 文字列がJSONとしてパース可能であるかの判定を行います。歴史的理由により存在しています
 	 * @param str
 	 */
-	function parsable(str: str): bool;
+	parsable(str: str): bool;
 }
+declare var Json: Json;
 
-declare namespace Date {
+declare interface Date {
 	/**
 	 * 現在時刻を取得します。
 	 */
-	function now(): num;
+	now(): num;
 	/**
 	 * 時刻の年を取得します。
 	 *
@@ -541,7 +544,7 @@ declare namespace Date {
 	 * 渡していない場合は現在時刻の年が返されます。
 	 * @param date
 	 */
-	function year(date?: num): num;
+	year(date?: num): num;
 	/**
 	 * 現在時刻の月を取得します。
 	 *
@@ -549,7 +552,7 @@ declare namespace Date {
 	 * 渡していない場合は現在時刻の月が返されます。
 	 * @param date
 	 */
-	function month(date?: num): num;
+	month(date?: num): num;
 	/**
 	 * 現在時刻の日を取得します。
 	 *
@@ -557,7 +560,7 @@ declare namespace Date {
 	 * 渡していない場合は現在時刻の日が返されます。
 	 * @param date
 	 */
-	function day(date?: num): num;
+	day(date?: num): num;
 	/**
 	 * 現在時刻の時を取得します。
 	 *
@@ -565,7 +568,7 @@ declare namespace Date {
 	 * 渡していない場合は現在時刻の時が返されます。
 	 * @param date
 	 */
-	function hour(date?: num): num;
+	hour(date?: num): num;
 	/**
 	 * 現在時刻の分を取得します。
 	 *
@@ -573,7 +576,7 @@ declare namespace Date {
 	 * 渡していない場合は現在時刻の分が返されます。
 	 * @param date
 	 */
-	function minute(date?: num): num;
+	minute(date?: num): num;
 	/**
 	 * 現在時刻の秒を取得します。
 	 * 
@@ -581,123 +584,128 @@ declare namespace Date {
 	 * 渡していない場合は現在時刻の秒が返されます。
 	 * @param date
 	 */
-	function second(date?: num): num;
+	second(date?: num): num;
 	/**
 	 * 日時の文字列からUNIX時間(ミリ秒含む)を返します。
 	 * 本質的には`new Date(date).getTime()`と変わりません。
 	 * @param date
 	 */
-	function parse(date: str): num;
+	parse(date: str): num;
 }
+declare var Date: Date;
 
-declare namespace Num {
+declare interface Num {
 	/**
 	 * 数値から16進数の文字列を生成します。
 	 * @param x
 	 */
-	function to_hex(x: num): str;
+	to_hex(x: num): str;
 	/**
 	 * 16進数の文字列から数値を生成します。
 	 * @param hex
 	 */
-	function from_hex(hex: str): num;
+	from_hex(hex: str): num;
 }
+declare var Num: Num;
 
-declare namespace Str {
+declare interface Str {
 	/**
 	 * 改行コード(LF)です。
 	 */
-	const lf: str;
+	readonly lf: str;
 	/**
 	 * a < b ならば -1、a == b ならば 0、a > b ならば 1 を返します。
 	 * arr.sortの比較関数として使用できます。
 	 * @param a
 	 * @param b
 	 */
-	function lt(a: str, b: str): num;
+	lt(a: str, b: str): num;
 	/**
 	 * a > b ならば -1、a == b ならば 0、a < b ならば 1 を返します。
 	 * arr.sortの比較関数として使用できます。
 	 * @param a
 	 * @param b
 	 */
-	function gt(a: str, b: str): num;
+	gt(a: str, b: str): num;
 	/**
 	 * Unicodeのコードポイントから文字を生成します。
 	 * @param codepoint - 0 以上、10FFFF(16) 以下である必要があります。
 	 */
-	function from_codepoint(codepoint: num): str;
+	from_codepoint(codepoint: num): str;
 	/**
 	 * Unicodeのコードポイント列を表す数値の配列から文字を生成します。
 	 * @param codePoints - 各要素は 0 以上、10FFFF(16) 以下である必要があります。
 	 */
-	function from_unicode_codepoints(codePoints: arr<num>): str;
+	from_unicode_codepoints(codePoints: arr<num>): str;
 	/**
 	 * UTF-8のバイト列を表す数値の配列から文字を生成します。
 	 * @param bytes - 各要素は 0 以上、255 以下である必要があります。
 	 */
-	function from_utf8_bytes(bytes: arr<num>): str;
+	from_utf8_bytes(bytes: arr<num>): str;
 }
+declare var Str: Str;
 
-declare namespace Obj {
+declare interface Obj {
 	/**
 	 * オブジェクトからキーの名前を取得します。
 	 * @param v
 	 */
-	function keys(v: object): arr<str>;
+	keys(v: object): arr<str>;
 	/**
 	 * オブジェクトからキーに対応した値だけを取り出します。
 	 * @param v
 	 */
-	function vals<T>(v: { [s: string]: T }): arr<T>;
-	function vals(v: obj): arr<value>;
+	vals<T>(v: { [s: string]: T }): arr<T>;
+	vals(v: obj): arr<value>;
 	/**
 	 * オブジェクトのキー、値、キーと値の組を配列にして返します。
 	 * @param v
 	 */
-	function kvs(v: obj): arr<[str, value]>;
+	kvs(v: obj): arr<[str, value]>;
 	/**
 	 * オブジェクトからキーに対応した値を返します。
 	 * @param v
 	 * @param key
 	 */
-	function get(v: obj, key: str): value;
+	get(v: obj, key: str): value;
 	/**
 	 * キーを使用してオブジェクトに値をいれます。
 	 * @param v
 	 * @param key
 	 * @param val
 	 */
-	function set(v: obj, key: str, val: value): null;
+	set(v: obj, key: str, val: value): null;
 	/**
 	 * オブジェクトにキーが含まれているかを判定します。
 	 * @param v
 	 * @param key
 	 */
-	function has(v: obj, key: str): bool;
+	has(v: obj, key: str): bool;
 	/**
 	 * オブジェクトのコピーを生成します。
 	 * @param v
 	 */
-	function copy(v: obj): obj;
+	copy(v: obj): obj;
 	/**
 	 * ２つのオブジェクトを併合したものを返します。
 	 * @param o1
 	 * @param o2
 	 */
-	function merge(o1: obj, o2: obj): obj;
+	merge(o1: obj, o2: obj): obj;
 }
+declare var Obj: Obj;
 
-declare namespace Error {
+declare interface ErrorConstructor {
 	/**
 	 * エラー型の値を作成します。
 	 * @param name
 	 * @param info
 	 */
-	function create(name: str, info?: value): Error;
+	create(name: str, info?: value): Error;
 }
+declare var Error: ErrorConstructor;
 
-declare namespace Async {
+declare interface Async {
 	/**
 	 * 指定した周期でコールバック関数を呼び出します。
 	 * 戻り値として停止関数を返します。
@@ -705,17 +713,16 @@ declare namespace Async {
 	 * @param callback
 	 * @param immediate
 	 */
-	function interval(interval: num, callback: fn, immediate?: bool): fn;
+	interval(interval: num, callback: fn, immediate?: bool): fn;
 	/**
 	 * 指定した時間経過後にコールバック関数を呼び出します。
 	 * 戻り値として停止関数を返します。
 	 * @param delay
 	 * @param callback
 	 */
-	function timeout(delay: num, callback: fn): fn;
+	timeout(delay: num, callback: fn): fn;
 }
-
-
+declare var Async: Async;
 declare const USER_ID: str | null;
 declare const USER_NAME: str | null;
 declare const USER_USERNAME: str | null;
@@ -739,51 +746,56 @@ declare const LOCALE: str;
 declare const SERVER_URL: str;
 
 type ModalIconType = 'info' | 'success' | 'warn' | 'error' | 'question';
-declare namespace Mk {
-	function dialog(title: str, text: str, type?: ModalIconType): null;
-	function confirm(title: str, text: str, type?: ModalIconType): bool;
-	function api(endpoint: str, params: obj, token?: str): obj | Error;
-	function save(key: str, value: value): null;
-	function load(key: str): value;
-	function url(): str;
-	function nyaize(text: str): str;
+declare interface Mk {
+	dialog(title: str, text: str, type?: ModalIconType): null;
+	confirm(title: str, text: str, type?: ModalIconType): bool;
+	api(endpoint: str, params: obj, token?: str): obj | Error;
+	save(key: str, value: value): null;
+	load(key: str): value;
+	url(): str;
+	nyaize(text: str): str;
+}
+declare var Mk: Mk;
+
+declare interface Plugin {
+	readonly config: obj;
+	register_post_form_action(title: str, fn: (form: { text: str, cw: str }, update: (key: 'text' | 'cw', value: str) => void) => void): void;
+	register_note_action(title: str, fn: (user: obj) => void): void;
+	register_user_action(title: str, fn: (note: obj) => void): void;
+	register_note_view_interruptor(fn: (note: obj) => obj | void): void;
+	register_note_post_interruptor(fn: (note: obj) => obj): void;
+	register_page_view_interruptor(fn: (page: obj) => obj): void;
+	open_url(url: str): void;
+}
+declare var Plugin: Plugin;
+
+interface IUiComponent<T extends obj, I extends str = str> {
+	id: I;
+	update: (options: T) => void;
 }
 
-declare namespace Plugin {
-	const config: obj;
-	function register_post_form_action(title: str, fn: (form: { text: str, cw: str }, update: (key: 'text' | 'cw', value: str) => void) => void): void;
-	function register_note_action(title: str, fn: (user: obj) => void): void;
-	function register_user_action(title: str, fn: (note: obj) => void): void;
-	function register_note_view_interruptor(fn: (note: obj) => obj | void): void;
-	function register_note_post_interruptor(fn: (note: obj) => obj): void;
-	function register_page_view_interruptor(fn: (page: obj) => obj): void;
-	function open_url(url: str): void;
+interface Component {
+	container(options: {}, id?: str): IUiComponent<typeof options>;
+	text(options: {}, id?: str): IUiComponent<typeof options>;
+	mfm(options: {}, id?: str): IUiComponent<typeof options>;
+	text(options: {}, id?: str): IUiComponent<typeof options>;
+	textarea(options: {}, id?: str): IUiComponent<typeof options>;
+	textInput(options: {}, id?: str): IUiComponent<typeof options>;
+	numberInput(options: {}, id?: str): IUiComponent<typeof options>;
+	button(options: {}, id?: str): IUiComponent<typeof options>;
+	buttons(options: {}, id?: str): IUiComponent<typeof options>;
+	switch(options: {}, id?: str): IUiComponent<typeof options>;
+	folder(options: {}, id?: str): IUiComponent<typeof options>;
+	postFormButton(options: {}, id?: str): IUiComponent<typeof options>;
+	postForm(options: {}, id?: str): IUiComponent<typeof options>;
 }
 
-declare namespace Ui {
-	interface IUiComponent<T extends obj, I extends str = str> {
-		id: I;
-		update: (options: T) => void;
-	}
+declare interface Ui {
+	readonly root: IUiComponent<{ children: arr<IUiComponent<obj>> }, '___root___'>;
+	render(children: arr<IUiComponent<obj>>): void;
+	get(id: str): IUiComponent<obj> | null;
 
-	const root: IUiComponent<{ children: arr<IUiComponent<obj>> }, '___root___'>
-	function render(children: arr<IUiComponent<obj>>);
-	function get(id: str): IUiComponent<obj> | null;
-
-	namespace C {
-		function container(options: {}, id?: str): IUiComponent<typeof options>;
-		function text(options: {}, id?: str): IUiComponent<typeof options>;
-		function mfm(options: {}, id?: str): IUiComponent<typeof options>;
-		function text(options: {}, id?: str): IUiComponent<typeof options>;
-		function textarea(options: {}, id?: str): IUiComponent<typeof options>;
-		function textInput(options: {}, id?: str): IUiComponent<typeof options>;
-		function numberInput(options: {}, id?: str): IUiComponent<typeof options>;
-		function button(options: {}, id?: str): IUiComponent<typeof options>;
-		function buttons(options: {}, id?: str): IUiComponent<typeof options>;
-		//function switch(options: {}, id?: str): IUiComponent<typeof options>;
-		function folder(options: {}, id?: str): IUiComponent<typeof options>;
-		function postFormButton(options: {}, id?: str): IUiComponent<typeof options>;
-		function postForm(options: {}, id?: str): IUiComponent<typeof options>;
-	}
+	readonly C: Component;
 }
+declare var Ui: Ui;
 
