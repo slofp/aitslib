@@ -1,6 +1,6 @@
-type num = Number;
-type str = String;
-type arr<T = any> = Array<T>;
+type num = number;
+type str = string;
+type arr<T = any> = T[];
 type bool = boolean;
 type fn = () => void;
 type value = any;
@@ -127,7 +127,11 @@ interface SymbolConstructor {
 	 */
 	readonly iterator: unique symbol;
 }
-declare var Symbol: SymbolConstructor;
+/**
+ * typescriptの互換性のためのSymbol定義です。
+ * aiscriptには使用できません
+ */
+declare var ___TS_Symbol___: SymbolConstructor;
 
 interface IteratorYieldResult<TYield> {
 	done?: false;
@@ -148,16 +152,17 @@ interface Iterator<T, TReturn = any, TNext = undefined> {
 }
 
 interface Iterable<T> {
-	[Symbol.iterator](): Iterator<T>;
+	[___TS_Symbol___.iterator](): Iterator<T>;
 }
 interface IterableIterator<T> extends Iterator<T> {
-	[Symbol.iterator](): IterableIterator<T>;
+	[___TS_Symbol___.iterator](): IterableIterator<T>;
 }
 // E: es2015.iterable.d.ts
 
 interface Array<T> {
 	// typescreiptとの互換性専用
-	[Symbol.iterator](): IterableIterator<T>;
+	[___TS_Symbol___.iterator](): IterableIterator<T>;
+
 	/**
 	 * 配列の要素数を取得します。
 	 */
