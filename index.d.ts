@@ -876,34 +876,34 @@ declare interface Plugin {
 		) => void
 	): void;
 	/**
-	 * ノートアクションを追加します。
+	 * ノートメニューに項目を追加します。
 	 * @param title - アクションメニューに表示する名前
 	 * @param fn - アクション。引数にノートオブジェクトを取ります。
 	 */
 	register_note_action(title: str, fn: (note: obj) => void): void;
 	/**
-	 * ユーザーアクションを追加します。
+	 * ユーザーメニューに項目を追加します。
 	 * @param title - アクションメニューに表示する名前
 	 * @param fn - アクション。引数にユーザーオブジェクトを取ります。
 	 */
 	register_user_action(title: str, fn: (user: obj) => void): void;
 	/**
-	 * ノートをレンダーする際に実行される処理を追加します。
+	 * UIに表示されるノート情報を書き換えます。
 	 * @param fn - アクション。引数にノートオブジェクトを取り、返り値にはノートオブジェクトを返します。null(void)を返した場合はノートは削除されます。
 	 */
 	register_note_view_interruptor(fn: (note: obj) => obj | void): void;
 	/**
-	 * ノートが投稿される際に実行される処理を追加します。
+	 * ノート投稿時にノート情報を書き換えます。
 	 * @param fn - アクション。引数にノートオブジェクトを取り、返り値にはノートオブジェクトを返します。
 	 */
 	register_note_post_interruptor(fn: (note: obj) => obj): void;
 	/**
-	 * ページの内容をレンダーする際に実行される処理を追加します。
+	 * UIに表示されるページ情報を書き換えます。
 	 * @param fn - アクション。引数にページオブジェクトを取り、返り値にはページオブジェクトを返します。
 	 */
 	register_page_view_interruptor(fn: (page: obj) => obj): void;
 	/**
-	 * 指定したurlに移動します。
+	 * 第一引数に渡されたURLをブラウザの新しいタブで開きます。
 	 *
 	 * urlは同一オリジンであっても新規タブで開かれます。
 	 * @param url
@@ -926,80 +926,155 @@ interface IUiComponent<T extends obj, I extends str = str> {
 	 */
 	update(options: T): void;
 }
-
+type FontType = 'serif' | 'sans-serif' | 'monospace';
+type Parameters<T extends (...args: any[]) => any> = T extends (...args: infer P) => any ? P : never;
 interface Component {
 	/**
 	 * コンテナコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	container(options: {}, id?: str): IUiComponent<typeof options>;
+	container(options: {
+		children?: arr<IUiComponent<obj>>;
+		align?: 'left' | 'center' | 'right';
+		bgColor?: str;
+		fgColor?: str;
+		font?: FontType;
+		borderWidth?: num;
+		borderColor?: str;
+		padding?: num;
+		rounded?: bool;
+		hidden?: bool;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 標準テキストコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	text(options: {}, id?: str): IUiComponent<typeof options>;
+	text(options: {
+		text?: str;
+		size?: num;
+		bold?: bool;
+		color?: str;
+		font?: FontType;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * MFMテキストコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	mfm(options: {}, id?: str): IUiComponent<typeof options>;
+	mfm(options: {
+		text?: str;
+		size?: num;
+		bold?: bool;
+		color?: str;
+		font?: FontType;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 複数行テキスト入力コンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	textarea(options: {}, id?: str): IUiComponent<typeof options>;
+	textarea(options: {
+		onInput?: (value: str) => void;
+		default?: str;
+		label?: str;
+		caption?: str;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 1行テキスト入力コンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	textInput(options: {}, id?: str): IUiComponent<typeof options>;
+	textInput(options: {
+		onInput?: (value: str) => void;
+		default?: str;
+		label?: str;
+		caption?: str;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 数値入力コンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	numberInput(options: {}, id?: str): IUiComponent<typeof options>;
+	numberInput(options: {
+		onInput?: (value: num) => void;
+		default?: num;
+		label?: str;
+		caption?: str;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * ボタンコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	button(options: {}, id?: str): IUiComponent<typeof options>;
+	button(options: {
+		text?: str;
+		onClick?: () => void;
+		primary?: bool;
+		rounded?: bool;
+		disabled?: bool;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 複数ボタンコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	buttons(options: {}, id?: str): IUiComponent<typeof options>;
+	buttons(options: {
+		buttons?: arr<Parameters<typeof Ui.C.button>[0]>
+	}, id?: str): IUiComponent<typeof options>;
+	/**
+	 * スイッチコンポーネント
+	 * @param options - パラメーター
+	 * @param id - コンポーネントID(必要であれば)
+	 */
+	switch(options: {
+		onChange?: (value: bool) => void;
+		default?: bool;
+		label?: str;
+		caption?: str;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * プルダウンコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	switch(options: {}, id?: str): IUiComponent<typeof options>;
+	select(options: {
+		items?: arr<{ text: str; value: str }>;
+		onChange?: (value: str) => void;
+		default?: str;
+		label?: str;
+		caption?: str;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * フォルダーコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	folder(options: {}, id?: str): IUiComponent<typeof options>;
+	folder(options: {
+		children?: IUiComponent<obj>;
+		title?: str;
+		opened?: bool;
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 投稿フォーム表示ボタンコンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	postFormButton(options: {}, id?: str): IUiComponent<typeof options>;
+	postFormButton(options: {
+		form?: { text: str };
+	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 投稿フォーム(そのもの)コンポーネント
 	 * @param options - パラメーター
 	 * @param id - コンポーネントID(必要であれば)
 	 */
-	postForm(options: {}, id?: str): IUiComponent<typeof options>;
+	postForm(options: {
+		text?: str;
+		primary?: bool;
+		rounded?: bool;
+		form?: { text: str };
+	}, id?: str): IUiComponent<typeof options>;
 }
 
 declare interface Ui {
