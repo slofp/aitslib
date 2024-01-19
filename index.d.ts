@@ -844,6 +844,18 @@ declare const LOCALE: str;
  * ここで取得されるのはオリジンのみです。パスまで取得したい場合は`Mk.url()`を使用してください。
  */
 declare const SERVER_URL: str;
+/**
+ * 現在のPlayIDを取得します。
+ * 
+ * (これはPlayでのみ有効です)
+ */
+declare const THIS_ID: str;
+/**
+ * 現在のPlayURLを取得します。
+ * 
+ * (これはPlayでのみ有効です)
+ */
+declare const THIS_URL: str;
 
 type ModalIconType = 'info' | 'success' | 'warn' | 'error' | 'question';
 declare interface Mk {
