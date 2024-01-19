@@ -337,6 +337,9 @@ interface Component {
 	 * @param id - コンポーネントID(必要であれば)
 	 */
 	postFormButton(options: {
+		text?: str;
+		primary?: bool;
+		rounded?: bool;
 		form?: { text: str };
 	}, id?: str): IUiComponent<typeof options>;
 	/**
@@ -345,9 +348,6 @@ interface Component {
 	 * @param id - コンポーネントID(必要であれば)
 	 */
 	postForm(options: {
-		text?: str;
-		primary?: bool;
-		rounded?: bool;
 		form?: { text: str };
 	}, id?: str): IUiComponent<typeof options>;
 }
