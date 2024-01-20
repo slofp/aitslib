@@ -147,8 +147,6 @@ interface Array<T> {
 // E: es2015.iterable.d.ts
 
 interface Array<T> {
-	// typescreiptとの互換性専用
-	[___TS_Symbol___.iterator]: IterableIterator<T>;
 	[n: number]: T;
 
 	/**
@@ -161,14 +159,14 @@ interface Array<T> {
 	 * 配列の最後に要素を追加します。
 	 * @param i
 	 */
-	push<I>(i: I): asserts this is Array<T | I>;
+	push(i: T): void;
 	/**
 	 * 【この操作は配列を書き換えます】
 	 *
 	 * 配列の最初に要素を追加します。
 	 * @param i
 	 */
-	unshift<I>(i: I): asserts this is Array<T | I>;
+	unshift(i: T): void;
 	/**
 	 * 【この操作は配列を書き換えます】
 	 *
