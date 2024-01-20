@@ -120,42 +120,26 @@ interface String {
 }
 
 // S: es2015.iterable.d.ts
-interface SymbolConstructor {
-	/**
-	 * A method that returns the default iterator for an object. Called by the semantics of the
-	 * for-of statement.
-	 */
-	readonly iterator: unique symbol;
+interface ___TS_SymbolConstructor___ {
+    readonly iterator: unique symbol;
 }
+// これはSymbolという名前でしか動作し無いため変更しないでください。
 /**
  * typescriptの互換性のためのSymbol定義です。
- * aiscriptには使用できません
+ * aiscriptには使用できません。
  */
-declare var ___TS_Symbol___: SymbolConstructor;
+declare const Symbol: ___TS_SymbolConstructor___;
 
-interface IteratorYieldResult<TYield> {
-	done?: false;
-	value: TYield;
+// これはIterableIteratorという名前でしか動作し無いため変更しないでください。
+/**
+ * typescriptでfor-ofを使用する際に使われます。
+ */
+interface IterableIterator<T> {
+    [Symbol.iterator](): IterableIterator<T>;
 }
 
-interface IteratorReturnResult<TReturn> {
-	done: true;
-	value: TReturn;
-}
-
-type IteratorResult<T, TReturn = any> = IteratorYieldResult<T> | IteratorReturnResult<TReturn>;
-interface Iterator<T, TReturn = any, TNext = undefined> {
-	// NOTE: 'next' is defined using a tuple to ensure we report the correct assignability errors in all places.
-	next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
-	return?(value?: TReturn): IteratorResult<T, TReturn>;
-	throw?(e?: any): IteratorResult<T, TReturn>;
-}
-
-interface Iterable<T> {
-	[___TS_Symbol___.iterator](): Iterator<T>;
-}
-interface IterableIterator<T> extends Iterator<T> {
-	[___TS_Symbol___.iterator](): IterableIterator<T>;
+interface Array<T> {
+    [Symbol.iterator](): IterableIterator<T>;
 }
 // E: es2015.iterable.d.ts
 
