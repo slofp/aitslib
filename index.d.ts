@@ -749,7 +749,6 @@ declare interface Async {
 	timeout(delay: num, callback: fn): fn;
 }
 declare var Async: Async;
-
 /**
  * 現在のユーザーID
  */
@@ -1008,6 +1007,7 @@ interface Component {
 		bold?: bool;
 		color?: str;
 		font?: FontType;
+		onClickEv?: (evName: str) => void;
 	}, id?: str): IUiComponent<typeof options>;
 	/**
 	 * 複数行テキスト入力コンポーネント
